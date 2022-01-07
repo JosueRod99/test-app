@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { NavBar } from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Col, Container, Row, Stack } from 'react-bootstrap';
+import { Button, Container, Stack } from 'react-bootstrap';
 
 function App() {
   return (
