@@ -5,7 +5,7 @@ exports.handler = async function (event, context) {
     user: 'bcfsah6y61ik',
     password: 'pscale_pw_7nP4KruYwmDeebrl01vQQdOT4jsNAAqomJPR_W3L9v8',
   });
-  var message = 'no conecta';
+  var message = 'aun no conecta';
   connection.connect(function (err) {
     if (err) {
       console.error('error connecting: ' + err.stack);
