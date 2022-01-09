@@ -9,10 +9,12 @@ exports.handler = async function (event, context) {
   connection.connect(function (err) {
     if (err) {
       console.error('error connecting: ' + err.stack);
+      message = 'error connecting: ' + err.stack;
       return;
     }
 
     console.log('connected as id ' + connection.threadId);
+    message = 'connected as id ' + connection.threadId;
   });
   return {
     statusCode: 200,
