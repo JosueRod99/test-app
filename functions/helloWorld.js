@@ -1,21 +1,24 @@
-var mysql = require('mysql');
-var connection = mysql.createConnection({
+// get the client
+const mysql = require('mysql2');
+
+// create the connection to database
+const connection = mysql.createConnection({
   host: 'tvozlishe0l0.us-east-1.psdb.cloud',
   user: 'bcfsah6y61ik',
   password: 'pscale_pw_7nP4KruYwmDeebrl01vQQdOT4jsNAAqomJPR_W3L9v8',
+  database: 'example',
 });
+
 exports.handler = async function (event, context) {
   var message = 'aun no conecta';
-  connection.connect(function (err) {
-    if (err) {
-      console.error('error connecting: ' + err.stack);
-      message = 'error connecting: ' + err.stack;
-      return;
+  // simple query
+  connection.query(
+    'SELECT * FROM `table` WHERE `name` = "Page" AND `age` > 45',
+    function (err, results, fields) {
+      console.log(results); // results contains rows returned by server
+      console.log(fields); // fields contains extra meta data about results, if available
     }
-
-    console.log('connected as id ' + connection.threadId);
-    message = 'connected as id ' + connection.threadId;
-  });
+  );
   return {
     statusCode: 200,
     headers: {
