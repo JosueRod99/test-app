@@ -7,11 +7,15 @@ const connection = mysql.createConnection({
   user: 'bcfsah6y61ik',
   password: 'pscale_pw_7nP4KruYwmDeebrl01vQQdOT4jsNAAqomJPR_W3L9v8',
   database: 'example',
+  ssl : {
+    rejectUnauthorized: true
+}
 });
 
 exports.handler = async function (event, context) {
   var message = 'aun no conecta';
   // simple query
+  connection.connect()
   connection.query('SELECT * FROM `users`', function (err, results, fields) {
     console.log(results); // results contains rows returned by server
     console.log(fields); // fields contains extra meta data about results, if available
