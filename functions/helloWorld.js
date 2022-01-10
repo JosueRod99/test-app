@@ -17,7 +17,7 @@ exports.handler = async function (event, context,text) {
   
   connection.query('SELECT * FROM users', function (err, rows, fields) {
     if (err) throw err
-
+console.log(rows)
     text = rows;
   })
   return {
