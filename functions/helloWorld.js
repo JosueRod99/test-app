@@ -19,11 +19,11 @@ exports.handler = async function (event, context, text) {
     someVar = value;
   }
   connection.connect();
-  connection.query('SELECT * FROM users', function (err, rows, fields) {
+  connection.query('SELECT * FROM `users`', function (err, results, fields) {
     if (err) {
       throw err;
     } else {
-      setValue(rows);
+      setValue(results);
     }
   });
 
