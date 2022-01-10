@@ -26,6 +26,7 @@ exports.handler = async function (event, context, text) {
       setValue(rows);
     }
   });
+
   return {
     statusCode: 200,
     headers: {
