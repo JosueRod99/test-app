@@ -11,14 +11,14 @@ const connection = mysql.createConnection({
     rejectUnauthorized: true
 }
 });
-connection.connect()
+
 exports.handler = async function (event, context,text) {
   // simple query
-  
+  connection.connect()
   connection.query('SELECT * FROM users', function (err, rows, fields) {
     if (err) throw err
 console.log(rows)
-    text = rows;
+    text = JSON.stringify(rows);
   })
   return {
     statusCode: 200,
