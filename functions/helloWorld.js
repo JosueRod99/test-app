@@ -12,18 +12,19 @@ const connection = mysql.createConnection({
 }
 });
 connection.connect()
-exports.handler = async function (event, context) {
+exports.handler = async function (event, context,text) {
   // simple query
   
   connection.query('SELECT * FROM users', function (err, rows, fields) {
     if (err) throw err
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*', // Allow from anywhere
-      },
-      body: JSON.stringify({ message:rows }),
-    };
+
+    text = rows;
   })
-  
+  return {
+    statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*', // Allow from anywhere
+    },
+    body: JSON.stringify({ message:text }),
+  };
 };
