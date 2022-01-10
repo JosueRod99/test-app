@@ -14,17 +14,18 @@ const connection = mysql.createConnection({
 
 exports.handler = async function (event, context,text) {
   // simple query
+  var message="";
   connection.connect()
   connection.query('SELECT * FROM users', function (err, rows, fields) {
     if (err) throw err
 console.log(rows)
-    text = JSON.stringify(rows);
+    message = JSON.stringify(rows);
   })
   return {
     statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*', // Allow from anywhere
     },
-    body: JSON.stringify({ message:text }),
+    body: JSON.stringify({ message }),
   };
 };
