@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 });
 connection.connect()
 exports.handler = async function (event, context) {
-  var message = 'aun no conecta';
+  var message = [];
   // simple query
   
   connection.query('SELECT * FROM users', function (err, rows, fields) {
