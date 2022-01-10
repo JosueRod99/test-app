@@ -7,25 +7,30 @@ const connection = mysql.createConnection({
   user: 'bcfsah6y61ik',
   password: 'pscale_pw_7nP4KruYwmDeebrl01vQQdOT4jsNAAqomJPR_W3L9v8',
   database: 'example',
-  ssl : {
-    rejectUnauthorized: true
-}
+  ssl: {
+    rejectUnauthorized: true,
+  },
 });
 
-exports.handler = async function (event, context,text) {
+exports.handler = async function (event, context, text) {
   // simple query
-  var message="";
-  connection.connect()
+  var someVar = [];
+  function setValue(value) {
+    someVar = value;
+  }
+  connection.connect();
   connection.query('SELECT * FROM users', function (err, rows, fields) {
-    if (err) throw err
-console.log(rows)
-    message = JSON.stringify(rows);
-  })
+    if (err) {
+      throw err;
+    } else {
+      setValue(rows);
+    }
+  });
   return {
     statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*', // Allow from anywhere
     },
-    body: JSON.stringify({ message }),
+    body: JSON.stringify({ message: someVar }),
   };
 };
