@@ -15,7 +15,6 @@ exports.handler = async (event, context) => {
   await mysql.end();
 
   // Return the results
-
   return {
     statusCode: 200,
     headers: {
