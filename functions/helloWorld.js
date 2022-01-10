@@ -11,17 +11,16 @@ const connection = mysql.createConnection({
     rejectUnauthorized: true
 }
 });
-
+connection.connect()
 exports.handler = async function (event, context) {
   var message = 'aun no conecta';
   // simple query
-  connection.connect()
-  connection.query('SELECT * FROM `users`', function (err, results, fields) {
-    console.log(results); // results contains rows returned by server
-    console.log(fields); // fields contains extra meta data about results, if available
-    console.log('correcto');
-    message=results;
-  });
+  
+  message=connection.query('SELECT * FROM users', function (err, rows, fields) {
+    if (err) throw err
+
+    return rows;
+  })
   return {
     statusCode: 200,
     headers: {
