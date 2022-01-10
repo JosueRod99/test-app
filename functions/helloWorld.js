@@ -16,10 +16,10 @@ exports.handler = async function (event, context) {
   var message = 'aun no conecta';
   // simple query
   
-  message=connection.query('SELECT * FROM users', function (err, rows, fields) {
+  connection.query('SELECT * FROM users', function (err, rows, fields) {
     if (err) throw err
 
-    return rows;
+    message = rows;
   })
   return {
     statusCode: 200,
