@@ -16,6 +16,7 @@ exports.handler = async function (event, context) {
     console.log(results); // results contains rows returned by server
     console.log(fields); // fields contains extra meta data about results, if available
     console.log('correcto');
+    message=results;
   });
   return {
     statusCode: 200,
